@@ -20,38 +20,65 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-lg w-80">
-        <h2 className="text-2xl text-white mb-6 text-center">Sign In</h2>
-        {error && <p className="text-red-500 mb-4">{error}</p>}
-        <input
-          className="w-full mb-4 p-2 rounded"
-          placeholder="Username"
-          value={form.username}
-          onChange={e => setForm({ ...form, username: e.target.value })}
-        />
-        <input
-          className="w-full mb-6 p-2 rounded"
-          placeholder="Password"
-          type="password"
-          value={form.password}
-          onChange={e => setForm({ ...form, password: e.target.value })}
-        />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 px-4 font-sans">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-900 p-8 rounded-xl shadow-xl w-full max-w-md space-y-6"
+      >
+        <h2 className="text-3xl font-bold text-white text-center tracking-wide">Sign In</h2>
+
+        {error && (
+          <p className="text-red-500 text-center font-medium bg-red-900 bg-opacity-40 rounded p-2">
+            {error}
+          </p>
+        )}
+
+        <div>
+          <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="username">
+            Username
+          </label>
+          <input
+            id="username"
+            type="text"
+            className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+            placeholder="Enter your username"
+            value={form.username}
+            onChange={(e) => setForm({ ...form, username: e.target.value })}
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="password">
+            Password
+          </label>
+          <input
+            id="password"
+            type="password"
+            className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+            placeholder="Enter your password"
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            required
+          />
+        </div>
+
         <button
           type="submit"
-          className="w-full bg-red-600 py-2 rounded text-white hover:bg-red-700"
+          className="w-full bg-red-600 py-3 rounded font-semibold tracking-wide text-white shadow hover:bg-red-700 hover:scale-[1.01] transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-red-400"
         >
           Sign In
         </button>
-        <p className="mt-4 text-center text-sm text-gray-400">
-  Don’t have an account?{' '}
-  <Link
-    href="/signup"
-    className="text-white underline"
-  >
-    Sign up
-  </Link>
-</p>
+
+        <p className="text-center text-sm text-gray-400 mt-4">
+          Don’t have an account?{' '}
+          <Link
+            href="/signup"
+            className="text-red-400 font-medium hover:underline hover:text-red-300 transition"
+          >
+            Sign up
+          </Link>
+        </p>
       </form>
     </div>
   );
